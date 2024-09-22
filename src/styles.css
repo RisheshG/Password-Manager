@@ -1,0 +1,169 @@
+/* Common Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #72c2f3, #f0c2c2);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Ensure full height */
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Container Styles */
+.login-container,
+.signup-container {
+  max-width: 450px;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Heading Styles */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+input {
+  padding: 15px;
+  border: 2px solid #72c2f3;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  width: 100%; /* Make inputs take full width */
+}
+
+input:focus {
+  border-color: #ff6b6b;
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+/* Button Styles */
+button {
+  padding: 15px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff4a4a;
+  transform: scale(1.05);
+}
+
+/* Error Message Styles */
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Link Text Styles */
+.link-text {
+  text-align: center;
+  color: #666;
+  margin-top: 20px;
+}
+
+.link {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating Shapes */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+
+.shape1 {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 107, 107, 0.5);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 80px;
+  height: 80px;
+  background: rgba(114, 194, 243, 0.5);
+  top: 70%;
+  right: 20%;
+  animation-delay: 1s;
+}
+
+.shape3 {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 196, 155, 0.5);
+  bottom: 20%;
+  left: 25%;
+  animation-delay: 2s;
+}
