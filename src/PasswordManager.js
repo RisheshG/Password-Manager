@@ -12,6 +12,7 @@ export default function PasswordManager() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // Search term state
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -86,10 +87,25 @@ export default function PasswordManager() {
     navigator.clipboard.writeText(password);
   };
 
+  // Filter passwords based on search term
+  const filteredPasswords = passwords.filter(password =>
+    password.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="password-manager-container">
       <h2>Password Manager</h2>
       <button className="logout-button" onClick={handleLogout}>Logout</button>
+
+      {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search by Service Name"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-bar"
+      />
+
       {isFormVisible && (
         <form className="password-form" onSubmit={addPassword}>
           <input
@@ -117,31 +133,37 @@ export default function PasswordManager() {
           <button type="button" onClick={() => setIsFormVisible(false)}>Cancel</button>
         </form>
       )}
-      {passwords.length === 0 ? (
-    <div className="empty-password-message">
-        <h3>It looks like you don't have any saved passwords yet!</h3>
-        <p>Start securing your accounts by adding your passwords.</p>
-        <button 
+
+      {filteredPasswords.length === 0 ? (
+        <div className="empty-password-message">
+          <h3>No passwords found!</h3>
+          {passwords.length === 0 ? (
+            <p>Start securing your accounts by adding your passwords.</p>
+          ) : (
+            <p>Try adjusting your search or add a new password.</p>
+          )}
+          <button 
             className="call-to-action-button" 
             onClick={() => setIsFormVisible(true)}>
             Add Your First Password
-        </button>
-    </div>
-) : (
-    <div className="password-card-container">
-        {passwords.map((password) => (
+          </button>
+        </div>
+      ) : (
+        <div className="password-card-container">
+          {filteredPasswords.map((password) => (
             <div key={password.id} className="password-card">
-                <h3>{password.name}</h3>
-                <p>Username: {password.username}</p>
-                <input type="text" readOnly value="••••••••" />
-                <button onClick={() => copyToClipboard(password.password)}>Copy Password</button>
-                <button className="delete-button" onClick={() => handleDeletePassword(password.id)}>
-                    🗑️
-                </button>
+              <h3>{password.name}</h3>
+              <p>Username: {password.username}</p>
+              <input type="text" readOnly value="••••••••" />
+              <button onClick={() => copyToClipboard(password.password)}>Copy Password</button>
+              <button className="delete-button" onClick={() => handleDeletePassword(password.id)}>
+                🗑️
+              </button>
             </div>
-        ))}
-    </div>
-)}
+          ))}
+        </div>
+      )}
+
       {!isFormVisible && <button className="toggle-form-button" onClick={() => setIsFormVisible(true)}>Add Password</button>}
     </div>
   );
