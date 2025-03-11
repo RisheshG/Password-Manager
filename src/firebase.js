@@ -5,14 +5,14 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAtNyOTGwf2DkJNUnwIh_fwak9nY9G4Lwk",
-    authDomain: "password-manager-11224.firebaseapp.com",
-    projectId: "password-manager-11224",
-    storageBucket: "password-manager-11224.appspot.com",
-    messagingSenderId: "333322722705",
-    appId: "1:333322722705:web:2a342e5a59870c1f430e30",
-    measurementId: "G-5Y31ME8SLT"
-};
+    apiKey: "AIzaSyDginICuYhG_FamqPzgoSqqQCxZ6uOgVFs",
+    authDomain: "password-manager-d3521.firebaseapp.com",
+    projectId: "password-manager-d3521",
+    storageBucket: "password-manager-d3521.firebasestorage.app",
+    messagingSenderId: "1076985995602",
+    appId: "1:1076985995602:web:45883717505da19dc55a8b",
+    measurementId: "G-RJKY3SPQRB"
+  };
 
 
 const app = initializeApp(firebaseConfig);
